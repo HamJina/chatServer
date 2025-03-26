@@ -11,3 +11,9 @@ spring:
     hibernate:
       ddl-auto: update
     show_sql: true
+
+jwt:
+  # chatserversecretaccesstokenchatserversecretaccesstokenchatserversecretaccesstoken
+  # base64 encoding에서 인코딩하기
+  secretKey: Y2hhdHNlcnZlcnNlY3JldGFjY2Vzc3Rva2VuY2hhdHNlcnZlcnNlY3JldGFjY2Vzc3Rva2VuY2hhdHNlcnZlcnNlY3JldGFjY2Vzc3Rva2Vu
+  expiration: 3000 #토큰의 유효기간(3000분)
