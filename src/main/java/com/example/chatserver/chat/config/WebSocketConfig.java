@@ -1,3 +1,4 @@
+/*
 package com.example.chatserver.chat.config;
 
 import lombok.RequiredArgsConstructor;
@@ -23,3 +24,4 @@ public class WebSocketConfig implements WebSocketConfigurer {
                 .setAllowedOrigins("http://localhost:3000");
     }
 }
+*/

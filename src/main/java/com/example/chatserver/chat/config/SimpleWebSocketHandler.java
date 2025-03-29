@@ -1,3 +1,4 @@
+/*
 package com.example.chatserver.chat.config;
 
 import org.springframework.stereotype.Component;
@@ -41,3 +42,4 @@ public class SimpleWebSocketHandler extends TextWebSocketHandler {
     }
 
 }
+*/
