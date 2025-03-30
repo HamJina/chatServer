@@ -1,5 +1,6 @@
 package com.example.chatserver.member.domain;
 
+import com.example.chatserver.common.domain.BaseTimeEntity;
 import com.fasterxml.jackson.databind.annotation.JsonTypeResolver;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class Member {
+public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
