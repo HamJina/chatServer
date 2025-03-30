@@ -30,4 +30,11 @@ public class ChatController {
         List<ChatRoomListResDto> chatRooms = chatService.getGroupChatRooms();
         return new ResponseEntity<>(chatRooms, HttpStatus.OK);
     }
+
+    //그룹 채팅방 참여
+    @PostMapping("/room/group/{roomId}/join")
+    public ResponseEntity<?> joinGroupChatRoom(@PathVariable Long roomId) {
+        chatService.addParticipantToGroupChat(roomId);
+        return ResponseEntity.ok().build();
+    }
 }
