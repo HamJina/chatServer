@@ -1,6 +1,6 @@
 package com.example.chatserver.chat.controller;
 
-import com.example.chatserver.chat.dto.ChatMessageReqDto;
+import com.example.chatserver.chat.dto.ChatMessageDto;
 import com.example.chatserver.chat.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
@@ -28,7 +28,7 @@ public class StompController {
 
     //방법2. MessageMapping 어노테이션만 활용(좀 더 유연한 방법)
     @MessageMapping("/{roomId}")
-    public void sendMessage(@DestinationVariable Long roomId, ChatMessageReqDto chatMessageReqDto){
+    public void sendMessage(@DestinationVariable Long roomId, ChatMessageDto chatMessageReqDto){
         System.out.println(chatMessageReqDto.getMessage());
         chatService.sendMessage(roomId, chatMessageReqDto); //메시지 데이터베이스에 저장하기
         //구족자들에게 메시지 발행
