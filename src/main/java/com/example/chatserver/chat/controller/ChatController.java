@@ -1,5 +1,6 @@
 package com.example.chatserver.chat.controller;
 
+import com.example.chatserver.chat.dto.ChatRoomListResDto;
 import com.example.chatserver.chat.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

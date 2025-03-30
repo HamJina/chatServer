@@ -5,6 +5,7 @@ import com.example.chatserver.chat.domain.ChatParticipant;
 import com.example.chatserver.chat.domain.ChatRoom;
 import com.example.chatserver.chat.domain.ReadStatus;
 import com.example.chatserver.chat.dto.ChatMessageReqDto;
+import com.example.chatserver.chat.dto.ChatRoomListResDto;
 import com.example.chatserver.chat.repository.ChatMessageRepository;
 import com.example.chatserver.chat.repository.ChatParticipantRepository;
 import com.example.chatserver.chat.repository.ChatRoomRepository;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -79,5 +81,22 @@ public class ChatService {
                 .member(member)
                 .build();
         chatParticipantRepository.save(chatParticipant);
+    }
+
+    //그룹 채팅방 목록 조회
+    public List<ChatRoomListResDto> getGroupChatRooms() {
+        List<ChatRoom> chatRooms = chatRoomRepository.findByIsGroupChat("Y"); //그룹 채팅만 조회
+
+        //entity -> dto
+        List<ChatRoomListResDto> dtos = new ArrayList<>();
+        for (ChatRoom c : chatRooms) {
+            ChatRoomListResDto dto = ChatRoomListResDto
+                    .builder()
+                    .roomId(c.getId())
+                    .roomName(c.getName())
+                    .build();
+            dtos.add(dto);
+        }
+        return dtos;
     }
 }
