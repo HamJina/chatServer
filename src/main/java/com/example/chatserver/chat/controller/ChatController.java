@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -60,6 +61,13 @@ public class ChatController {
     public ResponseEntity<?> getMyChatRooms() {
         List<MyChatListResDto> myChatListResDtos = chatService.getMyChatRooms();
         return new ResponseEntity<>(myChatListResDtos, HttpStatus.OK);
+    }
+
+    //채팅방 나가기
+    @DeleteMapping("/room/group/{roomId}/leave")
+    public ResponseEntity<?> leaveGroupChatRoom(@PathVariable Long roomId){
+        chatService.leaveGroupChatRoom(roomId);
+        return ResponseEntity.ok().build();
     }
 }
 
