@@ -2,7 +2,9 @@ package com.example.chatserver.chat.controller;
 
 import com.example.chatserver.chat.dto.ChatMessageDto;
 import com.example.chatserver.chat.dto.ChatRoomListResDto;
+import com.example.chatserver.chat.dto.MyChatListResDto;
 import com.example.chatserver.chat.service.ChatService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,4 +54,12 @@ public class ChatController {
         chatService.messageRead(roomId);
         return ResponseEntity.ok().build();
     }
+
+    //내 채팅방 목록 조회
+    @GetMapping("/my/rooms")
+    public ResponseEntity<?> getMyChatRooms() {
+        List<MyChatListResDto> myChatListResDtos = chatService.getMyChatRooms();
+        return new ResponseEntity<>(myChatListResDtos, HttpStatus.OK);
+    }
 }
+
