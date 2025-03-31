@@ -45,4 +45,11 @@ public class ChatController {
         List<ChatMessageDto> chatMessageDtos = chatService.getChatHistory(roomId);
         return new ResponseEntity<>(chatMessageDtos, HttpStatus.OK);
     }
+
+    //채팅 메시지 읽음 처리, 해당 엔드포인트를 호출하는 시점에 채팅 룸에 쌓여 있는 메시지 모두를 멤버가 읽게 됨
+    @PostMapping("/room/{roomId}/read")
+    public ResponseEntity<?> messageRead(@PathVariable Long roomId){
+        chatService.messageRead(roomId);
+        return ResponseEntity.ok().build();
+    }
 }
